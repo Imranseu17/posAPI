@@ -11,17 +11,30 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
 
-    public String username;
+    public String name;
 
-    public String password;
+    private String username;
+
+    private String password;
+
+    private String confirmpassword;
+
+    private String address;
 
     public User() {
     }
 
-    public User(int id, String username, String password) {
-        this.id = id;
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public User(String name, String username, String password, String confirmpassword, String address) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.confirmpassword = confirmpassword;
+        this.address = address;
     }
 
     public int getId() {
@@ -30,6 +43,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUsername() {
@@ -48,12 +69,31 @@ public class User {
         this.password = password;
     }
 
+    public String getConfirmpassword() {
+        return confirmpassword;
+    }
+
+    public void setConfirmpassword(String confirmpassword) {
+        this.confirmpassword = confirmpassword;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", confirmpassword='" + confirmpassword + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }
