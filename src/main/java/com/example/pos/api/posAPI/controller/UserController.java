@@ -51,15 +51,26 @@ public class UserController {
         user.setConfirmpassword(confirmpassword);
         user.setAddress(address);
 
-        userDao.save(user);
 
         if(user != null){
+            if(userDao.findByUsername(user.getUsername())!= null) {
+                return "This username already exits";
+            }
 
-            return "Save Successfully";
+            else {
+                userDao.save(user);
+                return "Save Successfully";
+            }
+
         }
 
         else
             return "Save Failed";
+
+
+
+
+
 
 
 
