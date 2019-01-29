@@ -6,6 +6,8 @@ import com.example.pos.api.posAPI.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping()
 @RestController
 public class UserController {
@@ -68,10 +70,25 @@ public class UserController {
             return "Save Failed";
 
 
+    }
+
+    @GetMapping("/findAllUser")
+    public List<User> findALLUSer(){
 
 
 
+        return userDao.findAll();
 
+
+    }
+
+
+    @GetMapping("/findByUser/{username}")
+    public User findByUSer(@PathVariable("username") String username){
+
+
+
+        return userDao.findByUsername(username);
 
 
     }
