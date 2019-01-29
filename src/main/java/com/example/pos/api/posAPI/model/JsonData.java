@@ -1,5 +1,7 @@
 package com.example.pos.api.posAPI.model;
 
+
+
 public class JsonData {
 
 
@@ -13,9 +15,13 @@ public class JsonData {
 
     private String address;
 
+    private String phonenumber;
+
+
+
+
     public JsonData() {
     }
-
 
     public String getName() {
         return name;
@@ -56,4 +62,14 @@ public class JsonData {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+
 }
