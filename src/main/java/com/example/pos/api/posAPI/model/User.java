@@ -31,20 +31,22 @@ public class User {
     @NotBlank
     private String phonenumber;
 
+    @NotBlank
+    private String occupationnname;
+
 
 
     public User() {
     }
 
-
-    public User(String name, String username, String password, String confirmpassword, String address, String phonenumber) {
+    public User(@NotBlank String name, @NotBlank String username, @NotBlank String password, @NotBlank String confirmpassword, @NotBlank String address, @NotBlank String phonenumber, @NotBlank String occupationnname) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.confirmpassword = confirmpassword;
         this.address = address;
         this.phonenumber = phonenumber;
-
+        this.occupationnname = occupationnname;
     }
 
     public int getId() {
@@ -103,6 +105,14 @@ public class User {
         this.phonenumber = phonenumber;
     }
 
+    public String getOccupationnname() {
+        return occupationnname;
+    }
+
+    public void setOccupationnname(String occupationnname) {
+        this.occupationnname = occupationnname;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -113,6 +123,7 @@ public class User {
                 ", confirmpassword='" + confirmpassword + '\'' +
                 ", address='" + address + '\'' +
                 ", phonenumber='" + phonenumber + '\'' +
+                ", occupationnname='" + occupationnname + '\'' +
                 '}';
     }
 }

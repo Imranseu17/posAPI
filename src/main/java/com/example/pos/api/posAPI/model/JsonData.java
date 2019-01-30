@@ -17,6 +17,8 @@ public class JsonData {
 
     private String phonenumber;
 
+    private String occupationnname;
+
 
 
 
@@ -71,5 +73,11 @@ public class JsonData {
         this.phonenumber = phonenumber;
     }
 
+    public String getOccupationnname() {
+        return occupationnname;
+    }
 
+    public void setOccupationnname(String occupationnname) {
+        this.occupationnname = occupationnname;
+    }
 }

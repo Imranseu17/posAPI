@@ -47,6 +47,7 @@ public class UserController {
         String confirmpassword = jsonData.getConfirmpassword();
         String address = jsonData.getAddress();
         String phonenumber = jsonData.getPhonenumber();
+        String occupationnname = jsonData.getOccupationnname();
 
         User user = new User();
 
@@ -56,6 +57,7 @@ public class UserController {
         user.setConfirmpassword(confirmpassword);
         user.setAddress(address);
         user.setPhonenumber(phonenumber);
+        user.setOccupationnname(occupationnname);
 
 
         if(user != null){
@@ -112,6 +114,7 @@ public class UserController {
             user.get().setPassword(jsonData.getPassword());
             user.get().setConfirmpassword(jsonData.getConfirmpassword());
             user.get().setAddress(jsonData.getAddress());
+            user.get().setOccupationnname(jsonData.getOccupationnname());
 
             User updatedUser = userDao.save(user.get());
             return updatedUser;
