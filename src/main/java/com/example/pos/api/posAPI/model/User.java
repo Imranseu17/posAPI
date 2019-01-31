@@ -2,6 +2,7 @@ package com.example.pos.api.posAPI.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Arrays;
 
 
 @Entity
@@ -34,12 +35,17 @@ public class User {
     @NotBlank
     private String occupationnname;
 
+    @NotBlank
+    @Lob
+    private byte[] image;
+
 
 
     public User() {
     }
 
-    public User(@NotBlank String name, @NotBlank String username, @NotBlank String password, @NotBlank String confirmpassword, @NotBlank String address, @NotBlank String phonenumber, @NotBlank String occupationnname) {
+
+    public User(@NotBlank String name, @NotBlank String username, @NotBlank String password, @NotBlank String confirmpassword, @NotBlank String address, @NotBlank String phonenumber, @NotBlank String occupationnname, @NotBlank byte[] image) {
         this.name = name;
         this.username = username;
         this.password = password;
@@ -47,6 +53,7 @@ public class User {
         this.address = address;
         this.phonenumber = phonenumber;
         this.occupationnname = occupationnname;
+        this.image = image;
     }
 
     public int getId() {
@@ -113,6 +120,14 @@ public class User {
         this.occupationnname = occupationnname;
     }
 
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -124,6 +139,7 @@ public class User {
                 ", address='" + address + '\'' +
                 ", phonenumber='" + phonenumber + '\'' +
                 ", occupationnname='" + occupationnname + '\'' +
+                ", image=" + Arrays.toString(image) +
                 '}';
     }
 }

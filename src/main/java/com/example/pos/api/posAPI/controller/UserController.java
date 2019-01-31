@@ -3,10 +3,12 @@ package com.example.pos.api.posAPI.controller;
 import com.example.pos.api.posAPI.dao.UserDao;
 import com.example.pos.api.posAPI.model.JsonData;
 import com.example.pos.api.posAPI.model.User;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,6 +50,13 @@ public class UserController {
         String address = jsonData.getAddress();
         String phonenumber = jsonData.getPhonenumber();
         String occupationnname = jsonData.getOccupationnname();
+        String  imagepath = jsonData.getImage();
+
+        byte[] imageByte= Base64.decodeBase64(imagepath);
+
+
+
+
 
         User user = new User();
 
@@ -58,6 +67,7 @@ public class UserController {
         user.setAddress(address);
         user.setPhonenumber(phonenumber);
         user.setOccupationnname(occupationnname);
+        user.setImage(imageByte);
 
 
         if(user != null){
@@ -106,6 +116,8 @@ public class UserController {
       Optional<User> user = userDao.findById(userId);
 
       boolean response =   user.isPresent();
+      byte[] imageByte= Base64.decodeBase64(jsonData.getImage());
+
 
         if(response){
             user.get().setName(jsonData.getName());
@@ -115,6 +127,7 @@ public class UserController {
             user.get().setConfirmpassword(jsonData.getConfirmpassword());
             user.get().setAddress(jsonData.getAddress());
             user.get().setOccupationnname(jsonData.getOccupationnname());
+            user.get().setImage(imageByte);
 
             User updatedUser = userDao.save(user.get());
             return updatedUser;
