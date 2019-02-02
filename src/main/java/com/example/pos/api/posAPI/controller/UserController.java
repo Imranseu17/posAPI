@@ -6,9 +6,19 @@ import com.example.pos.api.posAPI.model.User;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartException;
+import org.springframework.web.multipart.MultipartFile;
+import sun.rmi.runtime.Log;
 
+import javax.servlet.annotation.MultipartConfig;
 import javax.validation.Valid;
-import java.io.FileOutputStream;
+import java.awt.*;
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +28,8 @@ public class UserController {
 
     @Autowired
     UserDao userDao;
+
+    private String UPLOAD_DIR = "/home/imran/Documents/Workspace/posAPI/src/uploadDir/";
 
 
 
@@ -50,13 +62,6 @@ public class UserController {
         String address = jsonData.getAddress();
         String phonenumber = jsonData.getPhonenumber();
         String occupationnname = jsonData.getOccupationnname();
-        String  imagepath = jsonData.getImage();
-
-        byte[] imageByte= Base64.decodeBase64(imagepath);
-
-
-
-
 
         User user = new User();
 
@@ -67,7 +72,6 @@ public class UserController {
         user.setAddress(address);
         user.setPhonenumber(phonenumber);
         user.setOccupationnname(occupationnname);
-        user.setImage(imageByte);
 
 
         if(user != null){
@@ -91,8 +95,6 @@ public class UserController {
     @GetMapping("/findAllUser")
     public List<User> findALLUSer(){
 
-
-
         return userDao.findAll();
 
 
@@ -102,8 +104,6 @@ public class UserController {
     @GetMapping("/findByUser/{username}")
     public User findByUSer(@PathVariable("username") String username){
 
-
-
         return userDao.findByUsername(username);
 
 
@@ -111,13 +111,11 @@ public class UserController {
 
     @PutMapping("/updateusers/{id}")
     public User updateUser(@PathVariable(value = "id") int userId,
-                           @Valid @RequestBody JsonData jsonData) {
+                           @RequestBody JsonData jsonData) {
 
       Optional<User> user = userDao.findById(userId);
 
       boolean response =   user.isPresent();
-      byte[] imageByte= Base64.decodeBase64(jsonData.getImage());
-
 
         if(response){
             user.get().setName(jsonData.getName());
@@ -127,7 +125,6 @@ public class UserController {
             user.get().setConfirmpassword(jsonData.getConfirmpassword());
             user.get().setAddress(jsonData.getAddress());
             user.get().setOccupationnname(jsonData.getOccupationnname());
-            user.get().setImage(imageByte);
 
             User updatedUser = userDao.save(user.get());
             return updatedUser;
@@ -140,8 +137,28 @@ public class UserController {
 
 
     @DeleteMapping("/users/{id}")
-    public void deleteUser(@PathVariable int id) {
+    public void deleteUser(@PathVariable(value = "id") int id) {
         userDao.deleteById(id);
+    }
+
+    @PostMapping("/uploadImage/{id}")
+    public User uploadImage(@PathVariable(value = "id") int id ,
+                            @RequestParam(value = "file")
+                                    MultipartFile multipartFile){
+
+        try {
+            Optional<User> user = userDao.findById(id);
+            byte[] bytes = multipartFile.getBytes();
+            Path path = Paths.get(UPLOAD_DIR+"Upload File"+multipartFile.getOriginalFilename());
+            Files.write(path,bytes);
+            user.get().setImage(bytes);
+            return userDao.save(user.get());
+        } catch (MultipartException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 

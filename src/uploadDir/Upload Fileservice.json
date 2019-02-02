@@ -1,0 +1,4188 @@
+{
+  "front-version": "2.19.1",
+  "version": 3,
+  "nodes": [
+    {
+      "type": "Project",
+      "description": "",
+      "id": "634e03b3-6433-4c54-bed5-5f5c242c3f35",
+      "lastModified": "2019-01-06T16:38:43.401+06:00",
+      "name": "KaicomVending"
+    },
+    {
+      "type": "Scenario",
+      "description": "",
+      "id": "3a6cedf0-b243-4354-9035-0e25fb672452",
+      "lastModified": "2018-12-25T11:10:20.997+06:00",
+      "name": "S01",
+      "requestOrder": [
+        "Auth",
+        "Pos Sale",
+        "Customer Details",
+        "GS: Emergency Value",
+        "Account search",
+        "Auth : Refresh Token",
+        "Tariff Information",
+        "Pos Sales",
+        "Customer Consumption",
+        "Detailed Customer Info",
+        "Meter Status",
+        " Billing Modes",
+        "Card Groups",
+        " Meter Emergency Value",
+        "Address Information",
+        "Tax Rate",
+        "Charge Amounts",
+        "Subscriptions",
+        "Activate Card",
+        "Return Card",
+        "Payment History",
+        "Issue Card",
+        "Lost Card",
+        "Add Transaction",
+        "Parent Cao : Create",
+        "Parent Cao : Update",
+        "Cao : Create",
+        "Cao : Update",
+        "Update Charges",
+        "Charges : Create",
+        "Charges : Get All",
+        "Charges : Get All Active",
+        "Charges : Get By Id",
+        "Parent Cao : Get All",
+        "Parent Cao : Get By Id",
+        "Cao : Get By Id",
+        "Fee : Create",
+        "Fee : Update",
+        "Fee : Get All",
+        "Fee : Get By Id",
+        "Payment Config : Create",
+        "Payment Config : Update",
+        "Payment Config : Get By Id",
+        "Payment Config : All",
+        "Vat : Get All ",
+        "Agent : Create",
+        "Agent : Update",
+        "Agent : All",
+        "Agent : Get By ID",
+        "Cao : Delete",
+        "Parent Cao : Delete",
+        "Work Order : Create",
+        "Work Order : Get",
+        "Work Order : Update",
+        "Work Order : Update-Status",
+        "Work Order : Update-Assignee",
+        "Work Order : Update-AssignedBy",
+        "Cao : Get All ",
+        "Cao : Get All Paginated",
+        "Parent Cao : Get All Paginated",
+        "Gas Recharge And Dues Payment",
+        "Customer Accounts : Get By AccNo",
+        "Pos Sales : Get Pos Sale",
+        "WorkOrder : Origins",
+        "WorkOrder : Types",
+        "User : All",
+        "Work Order : Status",
+        "Payment : Cancel ",
+        "Work Order : Get By ID",
+        "Cutomer Meter : Get Card",
+        "Cutomer Meter : Add Card",
+        "Cutomer Meter : Delete Card",
+        "Invoice : Due",
+        "Invoice :  Create",
+        "Global Setting : Get All",
+        "Item : Get All",
+        "Work Order : Issue Refund Gas",
+        "Payment : Remove Card History",
+        "Payment : Authorize",
+        "Payment : Capture"
+      ],
+      "parentId": "634e03b3-6433-4c54-bed5-5f5c242c3f35"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"username\":\"admin\",\n  \"password\":\"Test1373!\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "name": "\"password\":\"Test1373!\"",
+              "value": ""
+            }
+          ]
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/auth/login"
+      },
+      "id": "527b8dee-bc2b-4907-b58d-d3f7cec7d277",
+      "lastModified": "2019-01-06T16:38:43.401+06:00",
+      "name": "Auth",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "enabled": true,
+          "name": "Device-Id",
+          "value": "55478890c997c5c2"
+        },
+        {
+          "enabled": true,
+          "name": "Device-Type",
+          "value": "android"
+        }
+      ],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "enabled": false,
+          "path": "code",
+          "value": "200"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \t\"start\":\"20181212\",\n\t\"end\":\"20181213\",\n\t\"pageSize\":1,\n\t\"pageNumber\":1\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/sales/getPosSales"
+      },
+      "id": "899b2faf-3f1e-4c4b-a75a-f63373453457",
+      "lastModified": "2018-12-13T16:03:36.155+06:00",
+      "name": "Pos Sale",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"accountNumber\":\"210031\"\n}"
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/account/getDetailedCustomerInformation"
+      },
+      "id": "2fca7274-aa48-4368-9074-d3b0fdcf70a7",
+      "lastModified": "2018-11-26T15:31:41.742+06:00",
+      "name": "Customer Details",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/settings/getMeterEmergencyValue"
+      },
+      "id": "2330de12-3654-4de8-8c6d-5c1f003e28f2",
+      "lastModified": "2018-11-26T15:31:45.544+06:00",
+      "name": "GS: Emergency Value",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "accountNo",
+              "value": "2"
+            },
+            {
+              "enabled": true,
+              "name": "customerCode",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "cardNo",
+              "value": "6"
+            },
+            {
+              "enabled": true,
+              "name": "meterSerial",
+              "value": "1"
+            },
+            {
+              "enabled": true,
+              "name": "accountStatus",
+              "value": "1"
+            },
+            {
+              "enabled": true,
+              "name": "phoneNo",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "email",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "fullName",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "address",
+              "value": "use"
+            },
+            {
+              "enabled": true,
+              "name": "metroId",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "zoneId",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "areaId",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "subarea",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "postalCode",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "cardIssueDate",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "pageNumber",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "pageSize",
+              "value": "2"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/account/getAccountSearchResults"
+      },
+      "id": "2e8daca6-b1e0-412f-ab60-e3b1cdda5b79",
+      "lastModified": "2018-11-26T15:31:51.362+06:00",
+      "name": "Account search",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/auth/refresh"
+      },
+      "id": "3bf12849-1a6d-49e4-958f-118785d901af",
+      "lastModified": "2018-11-26T15:32:05.729+06:00",
+      "name": "Auth : Refresh Token",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Device-Id",
+          "value": "ASDQWE!@#"
+        },
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"meterSerialNumber\":\"12345\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/meter/getTariffInformation"
+      },
+      "id": "2dc61081-511f-4d52-b867-57d971852918",
+      "lastModified": "2018-11-26T15:32:13.587+06:00",
+      "name": "Tariff Information",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"meterSerialNumber\":\"12345\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/meter/getTariffInformation"
+      },
+      "id": "97e37a2e-db7f-4ef1-981e-0adab314afad",
+      "lastModified": "2018-11-26T15:32:18.322+06:00",
+      "name": "Pos Sales",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "fromDateTime",
+              "value": "1483232461"
+            },
+            {
+              "enabled": true,
+              "name": "toDateTime",
+              "value": "1536744358"
+            },
+            {
+              "enabled": true,
+              "name": "meterSerialNo",
+              "value": "12345"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/meter/getCustomerConsumption"
+      },
+      "id": "dc300d8f-a4d3-4b6c-927b-77e5e96a1e9a",
+      "lastModified": "2018-11-26T15:32:22.899+06:00",
+      "name": "Customer Consumption",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{ \n\t\"accountNumber\": \"210031\" \n}\n"
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/account/getDetailedCustomerInformation"
+      },
+      "id": "cd8f737d-2a65-40aa-a244-1c871faa9046",
+      "lastModified": "2018-11-26T15:32:30.070+06:00",
+      "name": "Detailed Customer Info",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/settings/getMeterStatus"
+      },
+      "id": "327a097d-ae49-4c0b-9bee-9f0c1d47f492",
+      "lastModified": "2018-11-26T15:32:34.370+06:00",
+      "name": "Meter Status",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/settings/getBillingModes"
+      },
+      "id": "2a65cf4e-059b-4115-8fb4-46fa5e21fc47",
+      "lastModified": "2018-11-26T15:32:38.644+06:00",
+      "name": " Billing Modes",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/pos/settings/getCardGroups"
+      },
+      "id": "14b3a731-f70a-4efc-aa5c-f2ae99c09851",
+      "lastModified": "2018-11-01T17:53:03.653+06:00",
+      "name": "Card Groups",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/pos/settings/getMeterEmergencyValue"
+      },
+      "id": "a433cf8a-b091-4bec-8ead-daa65eabb950",
+      "lastModified": "2018-11-01T17:53:03.654+06:00",
+      "name": " Meter Emergency Value",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/pos/settings/getAddressInformation"
+      },
+      "id": "c92e6e1b-8bc4-4dd2-837b-c295141ff7a7",
+      "lastModified": "2018-11-01T17:53:03.654+06:00",
+      "name": "Address Information",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/pos/settings/getTaxRate"
+      },
+      "id": "890874c2-7909-4c0f-a6f7-cd869747c100",
+      "lastModified": "2018-11-01T17:53:03.654+06:00",
+      "name": "Tax Rate",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/pos/settings/getChargeAmounts"
+      },
+      "id": "f0c569cc-85a7-4361-ba37-f6832bfddec4",
+      "lastModified": "2018-11-01T17:53:03.654+06:00",
+      "name": "Charge Amounts",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/pos/settings/getSubscriptions"
+      },
+      "id": "285079d7-3d0b-4c66-afb3-8d82ca05dd87",
+      "lastModified": "2018-11-01T17:53:03.654+06:00",
+      "name": "Subscriptions",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"cardIdm\": \"012e45784ece461b\"\n}\n"
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/card/activateCard"
+      },
+      "id": "e52ee66b-1ea0-400b-991f-bd0e633c4d74",
+      "lastModified": "2018-12-05T11:23:00.791+06:00",
+      "name": "Activate Card",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"cardIdm\": \"65BVGT1236542\"\n}\n"
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/pos/card/returnCard"
+      },
+      "id": "22986c5c-c4cf-44dc-8e4e-e8f6fd6f5f5a",
+      "lastModified": "2018-11-01T17:53:03.654+06:00",
+      "name": "Return Card",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "from",
+              "value": "1535787608000"
+            },
+            {
+              "enabled": true,
+              "name": "to",
+              "value": "1536384903000"
+            },
+            {
+              "enabled": true,
+              "name": "accountNumber",
+              "value": "210031"
+            },
+            {
+              "enabled": true,
+              "name": "customerCode",
+              "value": "4532"
+            },
+            {
+              "enabled": true,
+              "name": "pageSize",
+              "value": "1"
+            },
+            {
+              "enabled": true,
+              "name": "pageNumber",
+              "value": "1"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/customer-payment/get-by-date"
+      },
+      "id": "bf0447e6-79e3-43fa-897c-75e9279cc552",
+      "lastModified": "2018-11-26T11:25:55.947+06:00",
+      "name": "Payment History",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"cardIdm\": \"65BVGT1236542\",\n  \"meterSerialNumber\": 15\n\n}\n"
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/pos/card/issueCard"
+      },
+      "id": "a4073dec-1947-451c-8086-99a3e8d4f4bd",
+      "lastModified": "2018-11-01T17:53:03.654+06:00",
+      "name": "Issue Card",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"cardIdm\": \"012e45784ece461b\"\n}\n"
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/card/lostCard"
+      },
+      "id": "a6f1eaea-56ae-42b3-a73e-c2f4d2e8213c",
+      "lastModified": "2018-12-05T11:20:14.347+06:00",
+      "name": "Lost Card",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"accountNumber\":\"210031\",\n\"cardNo\":\"65BVGT1236542\",\n\"amount\":10,\n\"paymentMethod\":\"1\",\n\"paymentNotes\":\"\",\n\"posId\":\"1\",\n\"posUserName\":\"ucb\"\t\n}"
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/pos/payment/addTransaction"
+      },
+      "id": "8df25ef5-ca11-4b9c-927c-00f321073adf",
+      "lastModified": "2018-11-01T17:53:03.655+06:00",
+      "name": "Add Transaction",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"parentCoaCode\": \"11200\",\n  \"parentCoaTitle\": \"Bank Cash Account\",\n  \"parentCoaDesc\": \"Bank Cash Account\",\n  \"leaf\": true,\n  \"parentCode\": \"1000\",\n  \"glType\": \"1\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/coa/createParentCoa"
+      },
+      "id": "c39ef6a4-e20f-44d9-bf2e-d30d4549fdc3",
+      "lastModified": "2018-11-25T12:53:34.639+06:00",
+      "name": "Parent Cao : Create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"parentCoaCode\": \"112001\",\n  \"parentCoaTitle\": \"Bank Cash Account54654\",\n  \"parentCoaDesc\": \"Bank Cash Account\",\n  \"leaf\": true,\n  \"parentCode\": \"1000\",\n  \"glType\": \"1\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/coa/updateParentCoa/11200"
+      },
+      "id": "26beb319-5259-4175-95bf-335ac01a2560",
+      "lastModified": "2018-11-07T14:27:03.109+06:00",
+      "name": "Parent Cao : Update",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"accNo\": \"113001\",\n  \"parentCoa\":{\"parentCoaCode\":\"0111\"},\n\"accName\": \"Bank Cash Account\",\n\"accDesc\": \"Bank Cash Account\",\n\"currCode\": \"BDT\",\n\"accType\": \"11\",\n\"accStatus\": \"A\",\n\"forwardBalance\": 0,\n\"transBalance\": 0,\n\"clearedBalance\": 0,\n\"encryptedBalance\": false,\n\"sysTransOnly\": false\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/coa/createCoa"
+      },
+      "id": "0c80cd16-1f46-4c5a-9459-88ef7da26995",
+      "lastModified": "2018-11-19T12:07:31.274+06:00",
+      "name": "Cao : Create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"accNo\": \"113001\",\n\"parentCoa\":{\"parentCoaCode\": \"1100\"},\n\"accName\": \"Bank Cash Accou45nt\",\n\"accDesc\": \"Bank Cash Acco454545unt\",\n\"currCode\": \"BDT\",\n\"accType\": \"11\",\n\"accStatus\": \"A\",\n\"forwardBalance\": 0,\n\"transBalance\": 0,\n\"clearedBalance\": 0,\n\"encryptedBalance\": false,\n\"sysTransOnly\": false\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/coa/updateCoa/110001"
+      },
+      "id": "08598f4a-4633-4e98-870a-ce5798420d48",
+      "lastModified": "2018-11-07T17:14:09.413+06:00",
+      "name": "Cao : Update",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "name",
+              "value": "HAHA"
+            },
+            {
+              "enabled": true,
+              "name": "price",
+              "value": "12315"
+            },
+            {
+              "enabled": true,
+              "name": "status",
+              "value": "ACTIVE"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/charges/updateCharge/19"
+      },
+      "id": "ad9f4212-3746-46ac-8853-0a56217bfd0e",
+      "lastModified": "2018-11-01T17:53:03.655+06:00",
+      "name": "Update Charges",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "name",
+              "value": "454"
+            },
+            {
+              "enabled": true,
+              "name": "price",
+              "value": "5"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/charges/createCharge"
+      },
+      "id": "d0ad38fc-888f-482a-98b3-97a16254acc2",
+      "lastModified": "2018-11-01T17:53:03.655+06:00",
+      "name": "Charges : Create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "pageSize",
+              "value": "20"
+            },
+            {
+              "enabled": true,
+              "name": "pageNumber",
+              "value": "1"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/charges/getItems"
+      },
+      "id": "07a1164f-3dbe-469d-b877-1ed3df03d8e7",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Charges : Get All",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/charges/allActiveCharges"
+      },
+      "id": "791ef151-e6b2-4ebd-b32f-3aa0d42347df",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Charges : Get All Active",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/charges/getItem/1"
+      },
+      "id": "aaa3d86f-376d-45aa-bfc2-bbbe6a468848",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Charges : Get By Id",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/coa/getParentCoas/all"
+      },
+      "id": "9ad53f7f-fe99-45b8-aada-cf5918227694",
+      "lastModified": "2018-11-19T12:50:16.926+06:00",
+      "name": "Parent Cao : Get All",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/coa/getParentCao/1000"
+      },
+      "id": "255cbb34-e350-40ea-be56-9dc0787a7b64",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Parent Cao : Get By Id",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/coa/getCoa/110001"
+      },
+      "id": "504bf80d-d560-4bec-9c48-f4bc4dd666c8",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Cao : Get By Id",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n   \n   \"name\":\"S40\",\n   \"description\":\"22\",\n   \"minAmount\":0,\n   \"maxAmount\":99.99,\n   \"percent\":false,\n   \"vat\":{\n      \n      \"name\":\"Vat 0\",\n      \"description\":null,\n      \"amount\":0,\n      \"percent\":false,\n      \"status\":\"A\"\n   },\n   \"feeAccount\":{\n      \"accNo\":\"121001\",\n      \"accName\":\"23\",\n      \"accDesc\":\"ssdsd\",\n      \"currCode\":\"BDT\",\n      \"accType\":\"3\",\n      \"accStatus\":\"A\",\n      \"forwardBalance\":1,\n      \"transBalance\":3,\n      \"clearedBalance\":3,\n      \"encryptedBalance\":true,\n      \"sysTransOnly\":true\n   },\n   \"status\":\"A\",\n   \"slabs\":[\n      {\n         \"feeAmount\":1,\n         \"id\":{\n            \"amountFrom\":12021\n         },\n         \"slabActive\":true\n      },\n      {\n         \"feeAmount\":134,\n         \"id\":{\n            \"amountFrom\":3423\n         },\n         \"slabActive\":false\n      },\n      {\n         \"feeAmount\":1,\n         \"id\":{\n            \"feeId\":25,\n            \"amountFrom\":101\n         },\n         \"slabActive\":true\n      },\n      {\n         \"feeAmount\":1,\n         \"id\":{\n            \"feeId\":25,\n            \"amountFrom\":120\n         },\n         \"slabActive\":true\n      }\n   ]\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/fee/create"
+      },
+      "id": "6f4258a8-6478-42f3-bcc6-b3f7e116330a",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Fee : Create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n   \"id\":29,\n   \"name\":\"S40546\",\n   \"description\":\"22\",\n   \"minAmount\":0,\n   \"maxAmount\":99.99,\n   \"percent\":false,\n   \"vat\":{\"id\":1},\n   \"feeAccount\":{\n      \"accNo\":\"121001\",\n      \"accName\":\"23\",\n      \"accDesc\":\"ssdsd\",\n      \"currCode\":\"BDT\",\n      \"accType\":\"3\",\n      \"accStatus\":\"A\",\n      \"forwardBalance\":1,\n      \"transBalance\":3,\n      \"clearedBalance\":3,\n      \"encryptedBalance\":true,\n      \"sysTransOnly\":true\n   },\n   \"status\":\"A\",\n   \"slabs\":[\n      {\n         \"feeAmount\":2,\n         \"id\":{\n            \"feeId\":29,\n            \"amountFrom\":2\n         },\n         \"slabActive\":true\n      },\n     {\n         \"feeAmount\":1,\n         \"id\":{\n            \"feeId\":29,\n            \"amountFrom\":1\n         },\n         \"slabActive\":true\n      }\n    \n   ]\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/fee/update/29"
+      },
+      "id": "01ce33a9-7ecc-463a-b348-62ce6576a9e9",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Fee : Update",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"name\":\"s1\",\n  \"description\":\"22\",\n  \"maxAmount\":99.99,\n  \"minAmount\":0,\n  \"isPercent\":false,\n  \"chartOfAccountId\":null,\n  \"vatId\":null,\n  \"slabs\":[\n    {\n      \"amountFrom\":101,\n      \"feeAmount\":1\n    },\n    {\n      \"amountFrom\":102,\n      \"feeAmount\":1\n    },\n    {\n      \"amountFrom\":104,\n      \"feeAmount\":1\n    }\n  ]\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "pageSize",
+              "value": "20"
+            },
+            {
+              "enabled": true,
+              "name": "pageNumber",
+              "value": "1"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/fee/getFees"
+      },
+      "id": "1744542d-31de-4e72-a571-1be0f0340a08",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Fee : Get All",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"name\":\"s1\",\n  \"description\":\"22\",\n  \"maxAmount\":99.99,\n  \"minAmount\":0,\n  \"isPercent\":false,\n  \"chartOfAccountId\":null,\n  \"vatId\":null,\n  \"slabs\":[\n    {\n      \"amountFrom\":101,\n      \"feeAmount\":1\n    },\n    {\n      \"amountFrom\":102,\n      \"feeAmount\":1\n    },\n    {\n      \"amountFrom\":104,\n      \"feeAmount\":1\n    }\n  ]\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/fee/getFee/29"
+      },
+      "id": "0a5aec25-74b4-4515-bee0-281c334b8852",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Fee : Get By Id",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"name\": \" s 232 Chap \",\n  \"description\": \"Chap Khaben Da da ??\",\n  \"feeId\": null,\n  \"coaAccNo\": null,\n  \"vatIncluded\": true,\n  \"companyShare\": 12,\n  \"agentShare\": 12,\n  \"parentAgentShareIfParent\": 12,\n  \"agentShareIfParent\": 12,\n  \"companyShareIfParent\": 12\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/fee/createPaymentConfiguration"
+      },
+      "id": "175c2388-1670-4b7b-a935-79bfec201b25",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Payment Config : Create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"name\": \" LLO \",\n  \"description\": \"Chap Khab\",\n  \"feeId\": 25,\n  \"coaAccNo\": 110001,\n  \"vatIncluded\": false,\n  \"companyShare\": 12,\n  \"agentShare\": 12,\n  \"parentAgentShareIfParent\": 12,\n  \"agentShareIfParent\": 12,\n  \"companyShareIfParent\": 12,\n  \"status\":\"ACTIVE\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/fee/updatePaymentConfiguration/2"
+      },
+      "id": "e0605b80-9577-4fe0-9ac7-393347eb8ac2",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Payment Config : Update",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/fee/getPaymentConfiguration/2"
+      },
+      "id": "8b8bc8fb-94d7-4d54-8244-dbcee6a6ebbf",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Payment Config : Get By Id",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/fee/getPaymentConfigurations"
+      },
+      "id": "15b78958-ae28-4d22-bad6-95b6d07e3cf2",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Payment Config : All",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/vat/getVats"
+      },
+      "id": "25a59a4c-f445-4436-9886-7271f620d41e",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Vat : Get All ",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n   \"id\":1,\n   \"name\":\"UCB11\",\n   \"email\":\"agent1@ucb.com\",\n   \"phoneNo\":\"01711245\",\n   \"tradeLicenseNo\":\"965874\",\n   \"tinNo\":\"36987\",\n   \"vatNo\":\"75468954\",\n   \"openingDate\":1535607031000,\n   \"status\":\"A\",\n   \"agentAccount\":{\n      \"accNo\":\"220001\",\n      \"accName\":\"UCB Account\",\n      \"accDesc\":\"UCB Account\",\n      \"currCode\":\"BDT\",\n      \"accType\":\"22\",\n      \"accStatus\":\"A\",\n      \"forwardBalance\":50.0,\n      \"transBalance\":50.0,\n      \"clearedBalance\":50.0,\n      \"encryptedBalance\":false,\n      \"sysTransOnly\":false\n   },\n   \"paymentFeeCnf\":{\n      \"id\":1,\n      \"name\":\"UCB Fee CNF\",\n      \"description\":null,\n      \"fee\":{\n         \"id\":1,\n         \"name\":\"UCB agent fee\",\n         \"description\":null,\n         \"minAmount\":null,\n         \"maxAmount\":null,\n         \"percent\":true,\n         \"vat\":{\n            \"id\":1,\n            \"name\":\"Vat 0\",\n            \"description\":null,\n            \"amount\":0.0,\n            \"percent\":false,\n            \"status\":\"A\"\n         },\n         \"feeAccount\":{\n            \"accNo\":\"290001\",\n            \"accName\":\"Fee Parking Account\",\n            \"accDesc\":\"Fee Parking Account\",\n            \"currCode\":\"BDT\",\n            \"accType\":\"22\",\n            \"accStatus\":\"A\",\n            \"forwardBalance\":0.0,\n            \"transBalance\":0.0,\n            \"clearedBalance\":0.0,\n            \"encryptedBalance\":false,\n            \"sysTransOnly\":false\n         },\n         \"status\":\"A\",\n         \"slabs\":[\n            {\n               \"feeAmount\":0.95,\n               \"id\":{\n                  \"feeId\":1,\n                  \"amountFrom\":0.0000\n               },\n               \"slabActive\":true\n            }\n         ]\n      },\n      \"companyFeeIncomeAccount\":{\n         \"accNo\":\"390001\",\n         \"accName\":\"Fee Income Account\",\n         \"accDesc\":\"Fee Income Account\",\n         \"currCode\":\"BDT\",\n         \"accType\":\"22\",\n         \"accStatus\":\"A\",\n         \"forwardBalance\":0.0,\n         \"transBalance\":0.0,\n         \"clearedBalance\":0.0,\n         \"encryptedBalance\":false,\n         \"sysTransOnly\":false\n      },\n      \"vatIncluded\":true,\n      \"companyShare\":0.00,\n      \"agentShare\":100.00,\n      \"parentAgentShareIfParent\":50.00,\n      \"agentShareIfParent\":50.00,\n      \"companyShareIfParent\":0.00,\n      \"status\":\"A\"\n   },\n  \"parentAgent\":{\"id\":1},\n  \"contact\": {\n    \"contactAddress\": {\n      \"addressLine\": \"string\",\n      \"addressType\": \"string\",\n      \"appartment\": \"string\",\n      \"appartmentLocation\": \"string\",\n      \"areaId\": \"string\",\n      \"id\": 0,\n      \"latitude\": 0,\n      \"longitude\": 0,\n      \"subArea\": \"string\",\n      \"zipCode\": \"string\"\n    },\n    \"contactId\": \"string\",\n    \"dob\": 0,\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"fullName\": \"string\",\n    \"gender\": \"M\",\n    \"identities\": [\n      {\n        \"expiryDate\": 0,\n        \"id\": 0,\n        \"identityType\": 0,\n        \"image\": \"string\",\n        \"issueDate\": 0,\n        \"reference\": \"string\",\n        \"userId\": \"string\"\n      }\n    ],\n    \"image\": \"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\",\n    \"lastName\": \"string\",\n    \"middleName\": \"string\",\n    \"mobileNumber\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"status\": \"1\",\n    \"title\": \"string\"\n  },\n   \"address\": {\n    \"addressLine\": \"string\",\n    \"addressType\": {\n      \"description\": \"string\",\n      \"id\": 1,\n      \"name\": \"string\",\n      \"status\": \"string\"\n    },\n    \"apartment\": \"string\",\n    \"area\": {\n      \"id\": 1,\n      \"name\": \"string\",\n      \"status\": \"string\",\n      \"subAreas\": [\n        {\n          \"area\": {},\n          \"id\": 0,\n          \"name\": \"string\",\n          \"status\": \"string\"\n        }\n      ],\n      \"zone\": {\n        \"areas\": [\n          {}\n        ],\n        \"id\": 1,\n        \"metro\": {\n          \"id\": 0,\n          \"name\": \"string\",\n          \"status\": \"string\",\n          \"zones\": [\n            {}\n          ]\n        },\n        \"name\": \"string\",\n        \"status\": \"string\"\n      }\n    },\n    \"block\": \"string\",\n    \"house\": \"string\",\n    \"id\": 0,\n    \"latitude\": 0,\n    \"longitude\": 0,\n    \"road\": \"string\",\n    \"section\": \"string\",\n    \"sector\": \"string\",\n    \"subArea\": \"string\",\n    \"zipCode\": \"string\"\n  }\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/agent/create"
+      },
+      "id": "5a9c5636-c8bf-4d01-92bf-45d0dfd310ee",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Agent : Create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n   \"id\":21,\n   \"name\":\"UCB11\",\n   \"email\":\"agent1@ucb.com\",\n   \"phoneNo\":\"01711245\",\n   \"tradeLicenseNo\":\"965874\",\n   \"tinNo\":\"36987\",\n   \"vatNo\":\"75468954\",\n   \"openingDate\":1535607031000,\n   \"status\":\"A\",\n   \"agentAccount\":{\n      \"accNo\":\"220001\",\n      \"accName\":\"UCB Account\",\n      \"accDesc\":\"UCB Account\",\n      \"currCode\":\"BDT\",\n      \"accType\":\"22\",\n      \"accStatus\":\"A\",\n      \"forwardBalance\":50.0,\n      \"transBalance\":50.0,\n      \"clearedBalance\":50.0,\n      \"encryptedBalance\":false,\n      \"sysTransOnly\":false\n   },\n   \"paymentFeeCnf\":{\n      \"id\":1,\n      \"name\":\"UCB Fee CNF\",\n      \"description\":null,\n      \"fee\":{\n         \"id\":1,\n         \"name\":\"UCB agent fee\",\n         \"description\":null,\n         \"minAmount\":null,\n         \"maxAmount\":null,\n         \"percent\":true,\n         \"vat\":{\n            \"id\":1,\n            \"name\":\"Vat 0\",\n            \"description\":null,\n            \"amount\":0.0,\n            \"percent\":false,\n            \"status\":\"A\"\n         },\n         \"feeAccount\":{\n            \"accNo\":\"290001\",\n            \"accName\":\"Fee Parking Account\",\n            \"accDesc\":\"Fee Parking Account\",\n            \"currCode\":\"BDT\",\n            \"accType\":\"22\",\n            \"accStatus\":\"A\",\n            \"forwardBalance\":0.0,\n            \"transBalance\":0.0,\n            \"clearedBalance\":0.0,\n            \"encryptedBalance\":false,\n            \"sysTransOnly\":false\n         },\n         \"status\":\"A\",\n         \"slabs\":[\n            {\n               \"feeAmount\":0.95,\n               \"id\":{\n                  \"feeId\":1,\n                  \"amountFrom\":0.0000\n               },\n               \"slabActive\":true\n            }\n         ]\n      },\n      \"companyFeeIncomeAccount\":{\n         \"accNo\":\"390001\",\n         \"accName\":\"Fee Income Account\",\n         \"accDesc\":\"Fee Income Account\",\n         \"currCode\":\"BDT\",\n         \"accType\":\"22\",\n         \"accStatus\":\"A\",\n         \"forwardBalance\":0.0,\n         \"transBalance\":0.0,\n         \"clearedBalance\":0.0,\n         \"encryptedBalance\":false,\n         \"sysTransOnly\":false\n      },\n      \"vatIncluded\":true,\n      \"companyShare\":0.00,\n      \"agentShare\":100.00,\n      \"parentAgentShareIfParent\":50.00,\n      \"agentShareIfParent\":50.00,\n      \"companyShareIfParent\":0.00,\n      \"status\":\"A\"\n   },\n  \"parentAgent\":{\"id\":1},\n  \"contact\": {\n    \"contactAddress\": {\n      \"addressLine\": \"string\",\n      \"addressType\": \"string\",\n      \"appartment\": \"string\",\n      \"appartmentLocation\": \"string\",\n      \"areaId\": \"string\",\n      \"id\": 0,\n      \"latitude\": 0,\n      \"longitude\": 0,\n      \"subArea\": \"string\",\n      \"zipCode\": \"string\"\n    },\n    \"contactId\": 16,\n    \"dob\": 0,\n    \"email\": \"agent@agent.com\",\n    \"firstName\": \"a\",\n    \"fullName\": \"ab\",\n    \"gender\": \"M\",\n    \"identities\": [\n      {\n        \"expiryDate\": 0,\n        \"id\": 0,\n        \"identityType\": 0,\n        \"image\": \"string\",\n        \"issueDate\": 0,\n        \"reference\": \"string\",\n        \"userId\": \"string\"\n      }\n    ],\n    \"image\": \"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\",\n    \"lastName\": \"b\",\n    \"middleName\": \"\",\n    \"mobileNumber\": \"132165\",\n    \"phoneNumber\": \"987\",\n    \"status\": \"1\",\n    \"title\": \"string\"\n  },\n   \"address\": {\n    \"addressLine\": \"string\",\n    \"addressType\": {\n      \"description\": \"string\",\n      \"id\": 1,\n      \"name\": \"string\",\n      \"status\": \"string\"\n    },\n    \"apartment\": \"string\",\n    \"area\": {\n      \"id\": 1,\n      \"name\": \"string\",\n      \"status\": \"string\",\n      \"subAreas\": [\n        {\n          \"area\": {},\n          \"id\": 0,\n          \"name\": \"string\",\n          \"status\": \"string\"\n        }\n      ],\n      \"zone\": {\n        \"areas\": [\n          {}\n        ],\n        \"id\": 1,\n        \"metro\": {\n          \"id\": 0,\n          \"name\": \"string\",\n          \"status\": \"string\",\n          \"zones\": [\n            {}\n          ]\n        },\n        \"name\": \"string\",\n        \"status\": \"string\"\n      }\n    },\n    \"block\": \"string\",\n    \"house\": \"string\",\n    \"id\": 9,\n    \"latitude\": 0,\n    \"longitude\": 0,\n    \"road\": \"4564\",\n    \"section\": \"strEing\",\n    \"sector\": \"striRTRTng\",\n    \"subArea\": \"striERTng\",\n    \"zipCode\": \"string\"\n  }\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/agent/update"
+      },
+      "id": "bd83d180-0d9b-4a79-956f-e8c4573d0b7d",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Agent : Update",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "pageSize",
+              "value": "20"
+            },
+            {
+              "enabled": true,
+              "name": "pageNumber",
+              "value": "1"
+            },
+            {
+              "enabled": true,
+              "name": "",
+              "value": ""
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/agent/getAgents"
+      },
+      "id": "cdffe829-dccc-4b8d-9586-3b696f73fe3f",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Agent : All",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/agent/getAgent/21"
+      },
+      "id": "56d47caa-a2d3-47a5-a9f2-305078ab9689",
+      "lastModified": "2018-11-01T17:53:03.656+06:00",
+      "name": "Agent : Get By ID",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/coa/deleteCoa/113001"
+      },
+      "id": "901a1889-4ada-4085-989d-16ecf3afcb71",
+      "lastModified": "2018-11-07T17:03:19.730+06:00",
+      "name": "Cao : Delete",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/coa/deleteParentCoa/1000"
+      },
+      "id": "1ac8c301-ddc5-4212-a47d-6a87f3880553",
+      "lastModified": "2018-11-28T16:40:59.602+06:00",
+      "name": "Parent Cao : Delete",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\t\n\t\"type\":{\"id\": 1},\n\t\"origin\":{\"id\": 2},\n\t\"status\": 1,\n\t\"description\": \"Test Work Order\",\n\t\"assignDate\": null,\n\t\"completionDate\": null\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/workOrder/create"
+      },
+      "id": "bed72c07-18bf-4832-8a71-c245fab221c3",
+      "lastModified": "2018-12-05T12:29:40.801+06:00",
+      "name": "Work Order : Create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "\n status \n\n\n\n\n\n\n\n\n\n"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "page.pageSize",
+              "value": "500"
+            },
+            {
+              "enabled": true,
+              "name": "page.pageNumber",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "status",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "workOrderTypeId",
+              "value": "11"
+            },
+            {
+              "enabled": true,
+              "name": "workOrderOriginId",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "createdById",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "assigneeId",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "assignedById",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "description",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "assignDate",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "completionDate",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "createdDate",
+              "value": ""
+            }
+          ]
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/workOrder/getWorkOrders"
+      },
+      "id": "fef564cd-a476-4eb3-9514-ed9e54825c5d",
+      "lastModified": "2018-12-06T13:30:31.398+06:00",
+      "name": "Work Order : Get",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\t\"id\": 2,\t\n\t\"type\":{\"id\": 1, \"name\": \"Gas Refund\"},\n\t\"origin\": {\"id\": 2},\n\t\"createdBy\":{\"id\": 1},\n\t\"assignee\": {\"id\": 1},\n\t\"assignedBy\": {\"id\": 1},\n\t\"status\": 5,\n\t\"description\": \"Refund Request for Card Number : 65BVGT1236542 , Meter Number : 12345 , Gas Unit : 15.9\",\n\t\"remarks\": null,\n\t\"assignDate\": null,\n\t\"completionDate\": null,\n     \"note\":\"Some Note\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/workOrder/update"
+      },
+      "id": "75a24651-56ed-42e4-bc44-33bc9f7cce8f",
+      "lastModified": "2018-12-06T18:18:33.144+06:00",
+      "name": "Work Order : Update",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "enabled": true,
+          "name": "",
+          "value": ""
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"id\": 7,\n  \"status\":5,\n  \"note\": \"Status changed for no reason\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/workOrder/updateStatus"
+      },
+      "id": "317ab5b7-7cbd-4444-a41b-f7291feed83e",
+      "lastModified": "2018-12-13T16:06:40.472+06:00",
+      "name": "Work Order : Update-Status",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"id\": ${KaicomVending.S01.\"Work Order : Get\".response.body.content[0].id},\n  \"assigneeId\":1,\n  \"note\": \"Status changed for no reason\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/workOrder/updateAssignee"
+      },
+      "id": "29cffcea-7f2d-4804-9232-d4149213d92b",
+      "lastModified": "2018-11-28T12:14:52.036+06:00",
+      "name": "Work Order : Update-Assignee",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"id\": ${KaicomVending.S01.\"Work Order : Get\".response.body.content[0].id},\n  \"assignedById\":1,\n  \"note\": \"Status changed for no reason\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/workOrder/updateAssignedBy"
+      },
+      "id": "fd84f803-a96b-4e6f-aff6-0f750ac79dc1",
+      "lastModified": "2018-11-28T12:15:02.846+06:00",
+      "name": "Work Order : Update-AssignedBy",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/coa/getCoas/all"
+      },
+      "id": "81b883d9-7c58-410b-9935-b9458f96bdc1",
+      "lastModified": "2018-11-19T12:46:51.447+06:00",
+      "name": "Cao : Get All ",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "name": "pageSize",
+              "value": "2"
+            },
+            {
+              "name": "pageNumber",
+              "value": "1"
+            },
+            {
+              "name": "accNo",
+              "value": "110001"
+            },
+            {
+              "enabled": true,
+              "name": "parentCoaCode",
+              "value": "1100"
+            },
+            {
+              "enabled": true,
+              "name": "accName",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "accDesc",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "currCode",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "accType",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "accStatus",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "forwardBalance",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "transBalance",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "clearedBalance",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "encryptedBalance",
+              "value": ""
+            },
+            {
+              "enabled": true,
+              "name": "sysTransOnly",
+              "value": ""
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/coa/getCoas"
+      },
+      "id": "6ebe7074-ba06-4825-9088-2bae8f0bb978",
+      "lastModified": "2018-11-27T13:24:44.048+06:00",
+      "name": "Cao : Get All Paginated",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "page.pageSize",
+              "value": "20"
+            },
+            {
+              "enabled": true,
+              "name": "page.pageNumber",
+              "value": "1"
+            },
+            {
+              "enabled": true,
+              "name": "parentCoaCode",
+              "value": "1000"
+            },
+            {
+              "enabled": true,
+              "name": "parentCoaTitle",
+              "value": "Asset"
+            },
+            {
+              "enabled": true,
+              "name": "glType",
+              "value": "1"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/coa/getParentCoas"
+      },
+      "id": "743f9db1-b3ad-4f90-93a1-6c07a957d036",
+      "lastModified": "2018-11-27T12:27:34.552+06:00",
+      "name": "Parent Cao : Get All Paginated",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"accountNumber\":44,\n  \"amount\": 300000,\n  \"cardNo\": \"65BVGT1236542\",\n  \"cardHistoryNo\":4,\n  \"paymentNotes\": \"If you want to add any note\",\n  \"userId\":1,\n  \"paymentMethodId\":1,\n  \"posId\":1\n}\n"
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/payment/gasRechargeAndDuesPayment"
+      },
+      "id": "a0eb4ffa-75b9-46aa-9f1b-3d78a61ff7c1",
+      "lastModified": "2018-11-26T11:43:39.861+06:00",
+      "name": "Gas Recharge And Dues Payment",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/customerAccounts/210031"
+      },
+      "id": "e4b96df4-f737-42c9-98e5-6eb7bbc97f19",
+      "lastModified": "2018-11-26T17:06:35.982+06:00",
+      "name": "Customer Accounts : Get By AccNo",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n \n  \"start\":\"20180502\",\n  \"end\":\"20181202\",\n  \"pageSize\":10,\n  \"pageNumber\":1\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/pos/sales/getPosSales"
+      },
+      "id": "7662d9ee-d9f8-45b1-a58f-57836c16739e",
+      "lastModified": "2018-11-26T15:45:53.243+06:00",
+      "name": "Pos Sales : Get Pos Sale",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/workOrder/getWorkOrderOrigins"
+      },
+      "id": "e9f99541-6e48-45d4-9bf6-ee49a95db5ec",
+      "lastModified": "2018-11-28T16:41:38.950+06:00",
+      "name": "WorkOrder : Origins",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/workOrder/getWorkOrderTypes"
+      },
+      "id": "b0b6f7e2-7bdb-4e37-9ef4-cc5a02bbdab9",
+      "lastModified": "2018-11-28T17:44:33.227+06:00",
+      "name": "WorkOrder : Types",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/user/searchrkStatus"
+      },
+      "id": "a6e3821c-7170-47cd-a8c9-35b14c592a2d",
+      "lastModified": "2018-12-02T12:14:30.673+06:00",
+      "name": "User : All",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/workOrder/getWorkStatus"
+      },
+      "id": "7f7277bd-ac0d-4b94-b2aa-ccaa28dadb6a",
+      "lastModified": "2018-12-02T12:15:43.693+06:00",
+      "name": "Work Order : Status",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "paymentId",
+              "value": "${\"KaicomVending\".\"S01\".\"Authorize Payment\".\"response\".\"body\".\"paymentId\"}"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/payment/cancelPayment"
+      },
+      "id": "b7934a5c-baf7-4ee6-b57c-c6d52f383c74",
+      "lastModified": "2018-12-02T12:53:33.175+06:00",
+      "name": "Payment : Cancel ",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "\n status \n\n\n\n\n\n\n\n\n\n"
+      },
+      "headersType": "Raw",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/workOrder/getWorkOrder/1"
+      },
+      "id": "6d100217-66cb-425b-a93d-84dccbe27f15",
+      "lastModified": "2018-12-05T11:03:51.767+06:00",
+      "name": "Work Order : Get By ID",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/customerMeters/00004730"
+      },
+      "id": "6b104b8d-b0f2-4e23-a103-3735afbd2ba9",
+      "lastModified": "2018-12-26T17:05:03.855+06:00",
+      "name": "Cutomer Meter : Get Card",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"cardNo\":\"012e4579a78d504c\",\n   \"meterSerialNo\":\"00004032\",\n   \"status\":\"A\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/customerMeters/card/add"
+      },
+      "id": "f3a257f6-af0e-4e32-9638-2bc9ebced5fd",
+      "lastModified": "2018-12-17T19:11:09.429+06:00",
+      "name": "Cutomer Meter : Add Card",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.5",
+        "name": "DELETE"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/customerMeters/card/012e4579a78d504c"
+      },
+      "id": "bb84d9e6-a8a5-4092-8954-a2ed0489f02f",
+      "lastModified": "2018-12-17T19:11:28.357+06:00",
+      "name": "Cutomer Meter : Delete Card",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/payment/dues/012e4579a78d504c"
+      },
+      "id": "8253dfcb-07d4-4123-a321-de21610d989f",
+      "lastModified": "2018-12-05T18:03:21.080+06:00",
+      "name": "Invoice : Due",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"itemId\":\"1\",\n  \"meterSerialNo\":\"12345\",\n  \"price\":120,\n  \"name\":\"380 Gas\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/api/v1/charges/createInvoice"
+      },
+      "id": "020ed7cc-7d28-49b5-8d00-82c499ca7008",
+      "lastModified": "2018-12-05T18:10:07.235+06:00",
+      "name": "Invoice :  Create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/settings/"
+      },
+      "id": "0e8ebe84-19e9-4c7f-952f-0cd671ebca30",
+      "lastModified": "2018-12-05T18:45:35.665+06:00",
+      "name": "Global Setting : Get All",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/charges/getItems"
+      },
+      "id": "2390b39b-5599-41df-9a99-71a108c48224",
+      "lastModified": "2018-12-05T19:11:17.327+06:00",
+      "name": "Item : Get All",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"cardNumber\":\"012E4579A78D504C\",\n  \"creditGasUnit\":15.9,\n \"refundGasUnit\":7.9\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/workOrder/issueGasRefund"
+      },
+      "id": "590a2530-174e-46dc-8a66-34feab521d5c",
+      "lastModified": "2018-12-13T16:04:12.111+06:00",
+      "name": "Work Order : Issue Refund Gas",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBodyEditorHeight": 234,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/payment/removeCardHistory/dac6d41f817a1a434d1fe939e6dca96f"
+      },
+      "id": "30ea4291-abf9-4053-8bfa-8fcacf0ee032",
+      "lastModified": "2018-12-12T12:02:14.706+06:00",
+      "name": "Payment : Remove Card History",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBodyEditorHeight": 234,
+        "textBody": "{\n  \"amount\": 12,\n  \"cardNo\": \"012E4579A78D504C\",\n  \"cardHistoryNo\":2,\n  \"paymentMethodId\":1\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/payment/authorizePayment"
+      },
+      "id": "db1749e3-2ad3-4121-9842-b617a475d9b8",
+      "lastModified": "2018-12-27T12:39:31.213+06:00",
+      "name": "Payment : Authorize",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "paymentId",
+              "value": "${\"KaicomVending\".\"S01\".\"Payment : Authorize\".\"response\".\"body\".\"paymentId\"}"
+            },
+            {
+              "name": "paymentId",
+              "value": "388"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "${SCHEMA}"
+        },
+        "host": "${HOST}",
+        "path": "/api/v1/payment/capturePayment"
+      },
+      "id": "3ef2231c-5eb9-4d4b-a625-a3c4d69bd060",
+      "lastModified": "2018-12-24T16:38:30.459+06:00",
+      "name": "Payment : Capture",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer ${\"KaicomVending\".\"S01\".\"Auth\".\"response\".\"body\".\"token\"}"
+        },
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3a6cedf0-b243-4354-9035-0e25fb672452"
+    },
+    {
+      "type": "Context",
+      "id": "e8d6be17-19db-4f4e-acbf-e5eadf38a725",
+      "lastModified": "2018-12-23T19:12:06.338+06:00",
+      "name": "Kornophuli",
+      "variables": [
+        {
+          "enabled": true,
+          "name": "HOST",
+          "value": "23.101.20.169:8080"
+        },
+        {
+          "enabled": true,
+          "name": "SCHEMA",
+          "value": "http"
+        }
+      ]
+    },
+    {
+      "type": "Context",
+      "id": "6fa1b70a-253e-44ce-b9f3-33226d2fec4e",
+      "lastModified": "2018-12-25T11:24:28.391+06:00",
+      "name": "Local",
+      "variables": [
+        {
+          "enabled": true,
+          "name": "HOST",
+          "value": "192.168.1.23:8080"
+        },
+        {
+          "enabled": true,
+          "name": "SCHEMA",
+          "value": "http"
+        }
+      ]
+    },
+    {
+      "type": "Context",
+      "id": "81d11e68-7472-4ff4-ac52-c0617f7b5781",
+      "lastModified": "2018-11-26T15:38:37.659+06:00",
+      "name": "OFFICE_SERVER",
+      "variables": [
+        {
+          "enabled": true,
+          "name": "HOST",
+          "value": "103.86.197.138:8181"
+        },
+        {
+          "enabled": true,
+          "name": "SCHEMA",
+          "value": "http"
+        }
+      ]
+    }
+  ]
+}

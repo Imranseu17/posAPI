@@ -2,6 +2,7 @@ package com.example.pos.api.posAPI.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Arrays;
 
 
@@ -14,28 +15,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
 
-    @NotBlank
     private String name;
 
-    @NotBlank
     private String username;
 
-    @NotBlank
     private String password;
 
-    @NotBlank
     private String confirmpassword;
 
-    @NotBlank
     private String address;
 
-    @NotBlank
     private String phonenumber;
 
-    @NotBlank
     private String occupationnname;
 
-    @NotBlank
     @Lob
     private byte[] image;
 
@@ -45,7 +38,7 @@ public class User {
     }
 
 
-    public User(@NotBlank String name, @NotBlank String username, @NotBlank String password, @NotBlank String confirmpassword, @NotBlank String address, @NotBlank String phonenumber, @NotBlank String occupationnname, @NotBlank byte[] image) {
+    public User(String name, String username, String password, String confirmpassword, String address, String phonenumber, String occupationnname, byte[] image) {
         this.name = name;
         this.username = username;
         this.password = password;

@@ -19,10 +19,6 @@ public class JsonData {
 
     private String occupationnname;
 
-    private String image;
-
-
-
 
     public JsonData() {
     }
@@ -83,11 +79,5 @@ public class JsonData {
         this.occupationnname = occupationnname;
     }
 
-    public String getImage() {
-        return image;
-    }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
 }
