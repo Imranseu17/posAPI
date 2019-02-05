@@ -2,7 +2,7 @@ package com.example.pos.api.posAPI.model;
 
 
 
-public class JsonData {
+public class UserData {
 
 
     public String name;
@@ -20,7 +20,7 @@ public class JsonData {
     private String occupationnname;
 
 
-    public JsonData() {
+    public UserData() {
     }
 
     public String getName() {

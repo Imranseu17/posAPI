@@ -1,21 +1,14 @@
 package com.example.pos.api.posAPI.controller;
 
 import com.example.pos.api.posAPI.dao.UserDao;
-import com.example.pos.api.posAPI.model.JsonData;
+import com.example.pos.api.posAPI.model.UserData;
 import com.example.pos.api.posAPI.model.User;
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
-import sun.rmi.runtime.Log;
 
-import javax.servlet.annotation.MultipartConfig;
-import javax.validation.Valid;
-import java.awt.*;
 import java.io.*;
-import java.net.URL;
-import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -53,15 +46,15 @@ public class UserController {
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(@RequestBody JsonData jsonData){
+    public String saveUser(@RequestBody UserData userData){
 
-        String name = jsonData.getName();
-        String username = jsonData.getUsername();
-        String password = jsonData.getPassword();
-        String confirmpassword = jsonData.getConfirmpassword();
-        String address = jsonData.getAddress();
-        String phonenumber = jsonData.getPhonenumber();
-        String occupationnname = jsonData.getOccupationnname();
+        String name = userData.getName();
+        String username = userData.getUsername();
+        String password = userData.getPassword();
+        String confirmpassword = userData.getConfirmpassword();
+        String address = userData.getAddress();
+        String phonenumber = userData.getPhonenumber();
+        String occupationnname = userData.getOccupationnname();
 
         User user = new User();
 
@@ -111,20 +104,20 @@ public class UserController {
 
     @PutMapping("/updateusers/{id}")
     public User updateUser(@PathVariable(value = "id") int userId,
-                           @RequestBody JsonData jsonData) {
+                           @RequestBody UserData userData) {
 
       Optional<User> user = userDao.findById(userId);
 
       boolean response =   user.isPresent();
 
         if(response){
-            user.get().setName(jsonData.getName());
-            user.get().setUsername(jsonData.getUsername());
-            user.get().setPhonenumber(jsonData.getPhonenumber());
-            user.get().setPassword(jsonData.getPassword());
-            user.get().setConfirmpassword(jsonData.getConfirmpassword());
-            user.get().setAddress(jsonData.getAddress());
-            user.get().setOccupationnname(jsonData.getOccupationnname());
+            user.get().setName(userData.getName());
+            user.get().setUsername(userData.getUsername());
+            user.get().setPhonenumber(userData.getPhonenumber());
+            user.get().setPassword(userData.getPassword());
+            user.get().setConfirmpassword(userData.getConfirmpassword());
+            user.get().setAddress(userData.getAddress());
+            user.get().setOccupationnname(userData.getOccupationnname());
 
             User updatedUser = userDao.save(user.get());
             return updatedUser;
