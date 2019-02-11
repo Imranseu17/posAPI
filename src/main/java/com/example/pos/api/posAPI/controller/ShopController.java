@@ -8,6 +8,7 @@ import com.example.pos.api.posAPI.model.ShopData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -69,6 +70,13 @@ public class ShopController {
     public Shop findByProduct(@PathVariable("productName") String productName ){
 
        return shopDao.findByProduct(productDao.findByProductname(productName));
+    }
+
+    @GetMapping("/findAllProduct")
+    public List<Shop> findAllProduct(){
+
+
+       return shopDao.findAllByProduct(productDao.findAll());
     }
 
 
