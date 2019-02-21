@@ -4,16 +4,19 @@ import com.example.pos.api.posAPI.dao.UserDao;
 import com.example.pos.api.posAPI.model.UserData;
 import com.example.pos.api.posAPI.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RequestMapping()
 @RestController
@@ -23,6 +26,19 @@ public class UserController {
     UserDao userDao;
 
     private String UPLOAD_DIR = "/home/imran/Documents/Workspace/posAPI/src/uploadDir/";
+
+
+    @PostMapping(path = "/myrequestheaders", produces = {MediaType.APPLICATION_JSON_VALUE} )
+    public ResponseEntity<Map<String, String>> getMyRequestHeaders(
+            @RequestHeader(value="Accept") String acceptHeader,
+            @RequestHeader(value="Authorization") String authorizationHeader)
+    {
+        Map<String, String> returnValue = new HashMap<>();
+        returnValue.put("Accept", acceptHeader);
+        returnValue.put("Authorization", authorizationHeader);
+
+        return ResponseEntity.status(HttpStatus.OK).body(returnValue);
+    }
 
 
 

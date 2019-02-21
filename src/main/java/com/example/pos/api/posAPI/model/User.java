@@ -1,9 +1,9 @@
 package com.example.pos.api.posAPI.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -32,13 +32,17 @@ public class User {
     @Lob
     private byte[] image;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Role> roleSet = new HashSet<>();
+
+
 
 
     public User() {
     }
 
 
-    public User(String name, String username, String password, String confirmpassword, String address, String phonenumber, String occupationnname, byte[] image) {
+    public User(String name, String username, String password, String confirmpassword, String address, String phonenumber, String occupationnname, byte[] image, Set<Role> roleSet) {
         this.name = name;
         this.username = username;
         this.password = password;
@@ -47,6 +51,7 @@ public class User {
         this.phonenumber = phonenumber;
         this.occupationnname = occupationnname;
         this.image = image;
+        this.roleSet = roleSet;
     }
 
     public int getId() {
@@ -121,6 +126,14 @@ public class User {
         this.image = image;
     }
 
+    public Set<Role> getRoleSet() {
+        return roleSet;
+    }
+
+    public void setRoleSet(Set<Role> roleSet) {
+        this.roleSet = roleSet;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -133,6 +146,7 @@ public class User {
                 ", phonenumber='" + phonenumber + '\'' +
                 ", occupationnname='" + occupationnname + '\'' +
                 ", image=" + Arrays.toString(image) +
+                ", roleSet=" + roleSet +
                 '}';
     }
 }
